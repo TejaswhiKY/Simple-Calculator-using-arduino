@@ -1,0 +1,96 @@
+#include <Keypad.h>
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+// Keypad setup
+const byte ROWS = 4;
+const byte COLS = 4;
+
+char keys[ROWS][COLS] = {
+  {'1','2','3','+'},
+  {'4','5','6','-'},
+  {'7','8','9','*'},
+  {'C','0','=','/'}
+};
+
+byte rowPins[ROWS] = {9, 8, 7, 6};
+byte colPins[COLS] = {5, 4, 3, 2};
+
+Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
+
+String num1 = "";
+String num2 = "";
+char op;
+bool secondNumber = false;
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0,0);
+  lcd.print("Calculator");
+  delay(2000);
+  lcd.clear();
+}
+
+void loop() {
+  char key = keypad.getKey();
+
+  if (key) {
+    if (key >= '0' && key <= '9') {
+      if (!secondNumber) {
+        num1 += key;
+        lcd.print(key);
+      } else {
+        num2 += key;
+        lcd.print(key);
+      }
+    }
+    else if (key == '+' || key == '-' || key == '*' || key == '/') {
+      op = key;
+      secondNumber = true;
+      lcd.print(key);
+    }
+    else if (key == '=') {
+      float n1 = num1.toFloat();
+      float n2 = num2.toFloat();
+      float result;
+
+      switch(op) {
+        case '+': result = n1 + n2; break;
+        case '-': result = n1 - n2; break;
+        case '*': result = n1 * n2; break;
+        case '/': 
+          if (n2 != 0)
+            result = n1 / n2; 
+          else {
+            lcd.clear();
+            lcd.print("Error");
+            delay(2000);
+            lcd.clear();
+            resetCalc();
+            return;
+          }
+          break;
+      }
+
+      lcd.clear();
+      lcd.print("Result:");
+      lcd.setCursor(0,1);
+      lcd.print(result);
+      delay(3000);
+      lcd.clear();
+      resetCalc();
+    }
+    else if (key == 'C') {
+      lcd.clear();
+      resetCalc();
+    }
+  }
+}
+
+void resetCalc() {
+  num1 = "";
+  num2 = "";
+  secondNumber = false;
+}
