@@ -99,11 +99,11 @@ Press an operator (+, −, ×, ÷)
 
 Enter the second number
 
-Press = to calculate
+Press # to calculate
 
 Result appears on the LCD
 
-Press C to clear and reset
+Press * to clear and reset
 
 
 ⚠️ Error Handling
