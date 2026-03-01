@@ -23,25 +23,30 @@ Users enter numbers using the keypad, and results are displayed on the LCD scree
 ---------------------------------------------------------------------------------------------
 
 [ 1 ] [ 2 ] [ 3 ] [ A ]
+
+
 [ 4 ] [ 5 ] [ 6 ] [ B ]
+
+
 [ 7 ] [ 8 ] [ 9 ] [ C ]
+
+
 [ * ] [ 0 ] [ # ] [ D ]
+
 
 
 🔎 Key Functions
 ---------------------------------------------------------------------------------------------
 
-A → Addition (+)
+| Key   | Function             |
+| ----- | -------------------- |
+| **A** | ➕ Addition (+)       |
+| **B** | ➖ Subtraction (−)    |
+| **C** | ✖ Multiplication (×) |
+| **D** | ➗ Division (÷)       |
+| **#** | 📟 Display Result    |
+| ***** | 🔄 Clear / Reset     |
 
-B → Subtraction (−)
-
-C → Multiplication (×)
-
-D → Division (÷)
-
-# → Display result
-
-* → Clear / Reset
 
 🛠 Components Used
 ---------------------------------------------------------------------------------------------
