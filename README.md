@@ -8,14 +8,7 @@ This project is simulated online using Wokwi.
 ---------------------------------------------------------------------------------------------
 This calculator performs basic arithmetic operations:
 
-
-➕ Addition
-
-➖ Subtraction
-
-✖ Multiplication
-
-➗ Division
+ Addition,Subtraction, Multiplication, Division.
 
 Users enter numbers using the keypad, and results are displayed on the LCD screen.
 
